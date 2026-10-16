@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #222;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+button, select {
+    padding: 5px 8px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(350px, 1.2fr) minmax(300px, 1fr);
+    gap: 15px;
+    align-items: start;
+}
+
+.workspace section {
+    min-width: 0;
+}
+
+#canvas {
+    width: 100%;
+    border: 1px solid #aaa;
+    background: white;
+    display: block;
+    touch-action: none;
+}
+
+.vertex {
+    fill: white;
+    stroke: black;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.vertex.selected {
+    fill: #cce5ff;
+}
+
+.edge {
+    stroke: black;
+    stroke-width: 1.5;
+    cursor: pointer;
+}
+
+.edge.selected {
+    stroke: red;
+    stroke-width: 3;
+}
+
+.edge-label {
+    font-size: 12px;
+    fill: #333;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.vertex-label {
+    font-size: 13px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 8px 0 15px;
+    font-size: 13px;
+}
+
+td, th {
+    border: 1px solid #aaa;
+    padding: 5px 8px;
+    text-align: center;
+    min-width: 20px;
+}
+
+td {
+    cursor: pointer;
+}
+
+td.highlight {
+    background: #cce5ff;
+}
+
+#lemma {
+    border: 1px solid #aaa;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+#lemma.valid {
+    background: #e4f3e4;
+}
+
+#lemma.invalid {
+    background: #f8dddd;
+}
+
+#degrees {
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+}

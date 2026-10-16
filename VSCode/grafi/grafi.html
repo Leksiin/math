@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Lab</title>
+    <link rel="stylesheet" href="grafi.css">
+</head>
+<body>
+    <h1>Graph Lab</h1>
+
+    <div class="toolbar">
+        <button data-mode="vertex">Вершина</button>
+        <button data-mode="edge">Ребро</button>
+        <button data-mode="delete">Удалить</button>
+        <button data-mode="move">Переместить</button>
+
+        <label>
+            Тип:
+            <select id="graphType">
+                <option value="undirected">Неориентированный</option>
+                <option value="directed">Ориентированный</option>
+            </select>
+        </label>
+
+        <label><input type="checkbox" id="allowLoops"> Петли</label>
+        <label><input type="checkbox" id="allowMultiple"> Кратные рёбра</label>
+
+        <button id="undo">Отмена</button>
+        <button id="clear">Очистить всё</button>
+    </div>
+
+    <p id="status">Режим: Вершина</p>
+
+    <div class="workspace">
+        <section>
+            <h3>Граф</h3>
+            <svg id="canvas" viewBox="0 0 700 500">
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10"
+                            refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="black"></path>
+                    </marker>
+                </defs>
+            </svg>
+            <p>Для добавления ребра нажми на две вершины по очереди.</p>
+        </section>
+
+        <section>
+            <h3>Информация</h3>
+            <p id="counts">Вершин: 0 | Рёбер: 0</p>
+            <div id="lemma"></div>
+            <div id="degrees"></div>
+
+            <h3>Экспорт</h3>
+            <button id="saveJson">Сохранить JSON</button>
+            <button id="loadJson">Загрузить JSON</button>
+            <input type="file" id="fileInput" accept=".json" hidden>
+            <button id="copyAdjacency">Копировать матрицу смежности CSV</button>
+            <button id="copyIncidence">Копировать матрицу инцидентности CSV</button>
+
+            <h3>Матрица смежности</h3>
+            <div id="adjacency"></div>
+
+            <h3>Матрица инцидентности</h3>
+            <div id="incidence"></div>
+        </section>
+    </div>
+
+    <script src="grafi.js"></script>
+</body>
+</html>
