@@ -1,0 +1,39 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление производных</title>
+    <link rel="stylesheet" href="proizvodnye.css">
+</head>
+<body>
+    <h1>Калькулятор производных</h1>
+
+    <div class="section">
+        <h2>1. Таблица производных</h2>
+        <div id="derivativesTable">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Производная суммы: d/dx(f1 + f2 + ... + fn)</h2>
+        <label>Введите функции через запятую (например: x^2, sin(x), 3*x):</label>
+        <input type="text" id="sumInput" value="x^2, sin(x), 3*x" placeholder="f1, f2, ...">
+        <button onclick="calculateSumDerivative()">Вычислить</button>
+        <div class="result" id="sumResult">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Производная произведения: d/dx(f1 * f2)</h2>
+        <label>Первая функция f1:</label>
+        <input type="text" id="prodF1" value="x^2" placeholder="f1">
+        <label>Вторая функция f2:</label>
+        <input type="text" id="prodF2" value="sin(x)" placeholder="f2">
+       <button onclick="calculateProductDerivative()">Вычислить</button>
+
+        <div class="result" id="prodResult"></div>
+    </div>
+
+    <script src="proizvodnye.js"></script>
+</body>
+</html> 
