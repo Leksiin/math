@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный визуализатор производных</title>
+
+    <link rel="stylesheet" href="proizv.css">
+
+    <!-- Библиотека для математических вычислений -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Интерактивный визуализатор производных</h1>
+
+        <div class="controls">
+
+            <div class="function-input">
+                <label for="functionInput">Функция f(x):</label>
+
+                <input
+                    type="text"
+                    id="functionInput"
+                    value="x^2"
+                    placeholder="Например: x^2"
+                >
+
+                <button id="buildButton">Построить график</button>
+            </div>
+
+            <div class="examples">
+                <span>Примеры:</span>
+                <button class="example" data-function="x^2">x²</button>
+                <button class="example" data-function="x^3">x³</button>
+                <button class="example" data-function="sin(x) + 0.5*x">sin(x)</button>
+                <button class="example" data-function="e^(-x^2)">e^(-x²)</button>
+                <button class="example" data-function="cos(x)">cos(x)</button>
+            </div>
+
+            <div id="errorMessage"></div>
+
+            <div class="formulas">
+                <p>
+                    <strong>Исходная функция:</strong>
+                    <span id="originalFunction">f(x) = x²</span>
+                </p>
+
+                <p>
+                    <strong>Производная:</strong>
+                    <span id="derivativeFormula">f'(x) = 2 * x</span>
+                </p>
+            </div>
+
+            <div class="settings">
+
+                <div class="setting">
+                    <label for="x0">
+                        Точка x₀:
+                        <span id="x0Value">1</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="x0"
+                        min="-8"
+                        max="8"
+                        step="0.1"
+                        value="1"
+                    >
+                </div>
+
+                <div class="setting">
+                    <label for="delta">
+                        Приращение Δx:
+                        <span id="deltaValue">2</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="delta"
+                        min="0.01"
+                        max="4"
+                        step="0.01"
+                        value="2"
+                    >
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="showDerivative" checked>
+                    <label for="showDerivative">
+                        Показывать график производной
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="info">
+                <p>f(x₀) = <span id="fx0">1</span></p>
+                <p>f(x₀ + Δx) = <span id="fx1">9</span></p>
+                <p>Угловой коэффициент секущей = <span id="secantSlope">4</span></p>
+                <p>f'(x₀) = <span id="tangentSlope">2</span></p>
+            </div>
+
+        </div>
+
+        <div class="graph-container">
+            <canvas id="graphCanvas"></canvas>
+        </div>
+
+        <div class="legend">
+            <span class="function-color">● f(x) — функция</span>
+            <span class="derivative-color">● f'(x) — производная</span>
+            <span class="secant-color">● Секущая</span>
+            <span class="tangent-color">● Касательная</span>
+        </div>
+
+        <p class="hint">
+            Колёсико мыши — масштабирование.
+            Зажмите левую кнопку мыши и перемещайте график.
+        </p>
+
+        <div class="explanation">
+            <h3>Геометрический смысл производной</h3>
+
+            <p>
+                Производная функции в точке показывает угловой
+                коэффициент касательной к графику функции.
+            </p>
+
+            <p>
+                Секущая проходит через две точки графика.
+                При уменьшении Δx вторая точка приближается
+                к первой, а секущая стремится превратиться
+                в касательную.
+            </p>
+
+            <p>
+                При Δx → 0 угловой коэффициент секущей
+                стремится к значению производной f'(x₀).
+            </p>
+        </div>
+
+    </div>
+
+    <script src="proizv.js"></script>
+
+</body>
+</html>
